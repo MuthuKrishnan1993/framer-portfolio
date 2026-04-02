@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import PaintReveal from "@/components/ui/PaintReveal";
 import type { SiteConfig } from "@/lib/content";
 
@@ -25,12 +26,22 @@ export default function Hero({ siteConfig }: { siteConfig: SiteConfig }) {
 
       <div className="relative z-[3] flex h-full flex-col justify-between px-0 py-[30px] pb-[10px] pointer-events-none">
         {/* First Name - MUTHU */}
-        <div className="sticky top-[40px] z-[3] overflow-hidden pl-[30px] md:pl-10">
+        <motion.div
+          initial={{ opacity: 0.001, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", bounce: 0.2, delay: 0.6, duration: 1 }}
+          className="sticky top-[40px] z-[3] overflow-hidden pl-[30px] md:pl-10"
+        >
           <h1 className="text-h1 text-white-100">{siteConfig.firstName}</h1>
-        </div>
+        </motion.div>
 
         {/* Middle Section */}
-        <div className="z-[3] flex items-center justify-between px-10">
+        <motion.div
+          initial={{ opacity: 0.001 }}
+          animate={{ opacity: 1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          className="z-[3] flex items-center justify-between px-10"
+        >
           {/* Left - Year + Portfolio Label */}
           <div className="flex flex-col items-start gap-10">
             <span className="text-mono-24 text-white-100">
@@ -45,12 +56,17 @@ export default function Hero({ siteConfig }: { siteConfig: SiteConfig }) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Section */}
         <div className="sticky top-[40px] z-[3] flex w-full flex-col items-end gap-4 px-6 md:flex-row md:items-start md:justify-end md:px-10">
           {/* Tagline */}
-          <div className="flex max-w-[410px] flex-col gap-2.5 pt-[30px] md:mr-auto lg:mr-0">
+          <motion.div
+            initial={{ opacity: 0.001 }}
+            animate={{ opacity: 1 }}
+            transition={{ type: "spring", bounce: 0.2, delay: 2, duration: 1 }}
+            className="flex max-w-[410px] flex-col gap-2.5 pt-[30px] md:mr-auto lg:mr-0"
+          >
             <p className="text-mono-24 text-white-100">{siteConfig.tagline}</p>
             <div className="flex items-center justify-center">
               <svg
@@ -66,14 +82,19 @@ export default function Hero({ siteConfig }: { siteConfig: SiteConfig }) {
                 <path d="M12 5v14M19 12l-7 7-7-7" />
               </svg>
             </div>
-          </div>
+          </motion.div>
 
           {/* Last Name - KRISHNAN */}
-          <div className="overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0.001, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", bounce: 0.2, delay: 0.6, duration: 1 }}
+            className="overflow-hidden"
+          >
             <h1 className="text-h1 text-white-100 text-right">
               {siteConfig.lastName}
             </h1>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
